@@ -1,0 +1,104 @@
+
+/* Header.css - Styles for the Header component of the portfolio website. 
+   This file defines the styles for the header, including layout, colors, fonts, and responsive design. 
+   It uses CSS variables for easy theming and maintenance. */
+   
+:root {
+  --primary: #0f172a;
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --text: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border: #1e293b;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: -1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logo h1:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .logo h1 {
+    font-size: 1.4rem;
+  }
+}
