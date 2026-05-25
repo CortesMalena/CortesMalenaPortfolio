@@ -1,0 +1,258 @@
+/* ========= ABOUT ME COMPONENT STYLESHEET ========== */
+/* Layout mapping structural base configuration */
+.about-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+  /* Added left padding to respect the 160px sidebar navigation bubble space safety */
+  padding: 5rem 2rem 5rem 210px; 
+  position: relative;
+}
+
+.about-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Header branding presentation stylings */
+.about-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-main-title {
+  font-size: 3rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.title-underline {
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-gold);
+  border-radius: 2px;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+/* Two column flexible content layout engine grid framework */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ========== SKILLS ========== */
+.skills-column,
+.studies-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.column-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(197, 210, 248, 0.3);
+}
+
+/* Technical context skill badging wrapper structure configurations */
+.skills-badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  /* Removed hidden overflows to allow badge hover animations to render fully */
+  overflow: visible; 
+  padding: 5px 0;
+}
+
+.skill-badge {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background-color: transparent;
+  border: 1px solid rgba(79, 12, 40, 0.2);
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  display: inline-block;
+}
+
+.skill-badge:hover {
+  background-color: var(--primary);
+  color: var(--text-light);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(79, 12, 40, 0.2);
+}
+
+/* ==========  ACADEMIC TIMELINE ========== */
+/* Academic timeline design tree architecture layouts */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+/* Vertical track architecture timeline center core line guide vector */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 3px;
+  width: 2px;
+  background-color: rgba(197, 210, 248, 0.5);
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Target node point tracking pointers bullets styles */
+.timeline-marker {
+  position: absolute;
+  left: -1.5rem;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  z-index: 5;
+}
+
+.marker-core {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 2px var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .marker-core {
+  transform: scale(1.3);
+  background-color: #7dd3fc;
+}
+
+/* Content block styling details cards */
+.timeline-content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-left: 0.5rem;
+  width: 100%;
+}
+
+/* Header layout structure within the study entry details card bounds */
+.timeline-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.study-title {
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Sutil tag built cleanly to render your new dynamic year variables */
+.study-years-tag {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-gray);
+  opacity: 0.85;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.study-institution {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.study-description {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Responsive Fluid Layout adaptations adjustments queries */
+@media (max-width: 992px) {
+  .about-section {
+    padding-left: 190px;
+  }
+  
+  .about-grid {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    /* Reset left padding on mobile view to clear top bubble navigation bar stack */
+    padding: 120px 1.5rem 5rem 1.5rem; 
+  }
+
+  .about-main-title {
+    font-size: 2.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  
+  .skills-badge-container {
+    justify-content: flex-start;
+  }
+
+  /* Responsive layout adjustment handling year text spacing neatly on smaller displays */
+  .timeline-box-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+}

@@ -1,0 +1,65 @@
+/* ========= FOOTER COMPONENT STYLESHEET ========== */
+/* Layout mapping structural base configuration */
+.footer-section {
+  width: 100%;
+  background-color: var(--primary-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Sutil separación clara sobre fondo oscuro */
+  box-sizing: border-box;
+  /* Added left padding to respect the 160px sidebar navigation bubble space safety */
+  padding: 2rem 2rem 2rem 210px;
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Left side layout presentation stylings */
+.footer-copyright p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6); /* Cambiado a blanco translúcido para asegurar contraste */
+  margin: 0;
+  font-weight: 400;
+}
+
+.footer-brand {
+  color: var(--text-light); /* Resalta tu nombre en blanco puro sobre el fondo oscuro */
+  font-weight: 600;
+}
+
+/* Right side layout presentation stylings */
+.footer-craft p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6); /* Cambiado a blanco translúcido para asegurar contraste */
+  margin: 0;
+  font-weight: 400;
+}
+
+/*========= Responsive Design ========== */
+/* Responsive Fluid Layout adaptations adjustments queries */
+@media (max-width: 992px) {
+  .footer-section {
+    padding-left: 190px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    /* Reset left padding on mobile view to clear top bubble navigation bar stack */
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}

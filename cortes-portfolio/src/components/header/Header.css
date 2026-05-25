@@ -1,104 +1,224 @@
-
-/* Header.css - Styles for the Header component of the portfolio website. 
-   This file defines the styles for the header, including layout, colors, fonts, and responsive design. 
-   It uses CSS variables for easy theming and maintenance. */
-   
-:root {
-  --primary: #0f172a;
-  --accent: #3b82f6;
-  --accent-light: #60a5fa;
-  --text: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --border: #1e293b;
-}
-
+/* ========= HEADER COMPONENT STYLESHEET ========== */
+/* Sidebar bubble positioning for desktop views */
 .header {
-  background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  bottom: 25px;
+  width: 160px; 
   z-index: 100;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Floating capsule container with backdrop blur effect */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 1.5rem 3rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 3.5rem;
+  padding: 2.5rem 1.5rem;
+  height: 100%;
+  width: 100%;
+  background: rgba(79, 12, 40, 0.95); /* Primary burgundy tone with transparency */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 210, 248, 0.2);
+  border-radius: 40px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.logo h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
-  letter-spacing: -1px;
-  transition: all 0.3s ease;
+/* Circular logo container framework */
+.logo-container {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-dark);
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.08);
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========== HAMBURGER FOR MOBILE ========== */
+/* Hidden by default on standard high-res monitors */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
   cursor: pointer;
+  padding: 0;
+  z-index: 110;
 }
 
-.logo h1:hover {
-  transform: scale(1.05);
+.hamburger-btn .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-light);
+  border-radius: 5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hamburger transition transformations to render close X structure */
+.hamburger-btn.open .bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger-btn.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger-btn.open .bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ========== NAVIGATION LINKS ========== */
+/* Navigation items layout architecture */
 .nav-links {
   display: flex;
+  flex-direction: column;
   list-style: none;
-  gap: 2rem;
+  gap: 2.5rem;
   margin: 0;
   padding: 0;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-links li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  color: var(--text-gray-light);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--text-light);
+  transform: scale(1.05);
+}
+
+/* Active navigation text highlights styling */
+.nav-links a.active {
+  color: #7dd3fc; /* sky-blue contrast tone highlight */
+  font-weight: 700;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
   background: var(--accent);
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: var(--text);
+.nav-links a.active::after {
+  width: 80%;
+  background: #7dd3fc;
 }
 
 .nav-links a:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
-/* Responsive */
+/* ========== RESPONSIVE DESIGN ========== */
+/* Mobile architecture responsive handler rules breakpoint */
 @media (max-width: 768px) {
+  .header {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: auto;
+    width: calc(100% - 30px);
+    height: 75px;
+  }
+
   .navbar {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    padding: 0 1.5rem;
+    border-radius: 24px;
+    overflow: visible; /* allows dropdown menu overlay visibility */
   }
 
+  .logo-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hamburger-btn {
+    display: flex; /* manifests the active navigation controller switch */
+  }
+
+  /* Hidden collapsed layout defaults for mobile displays */
   .nav-links {
-    gap: 1rem;
-    font-size: 0.9rem;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: rgba(79, 12, 40, 0.98);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(197, 210, 248, 0.2);
+    padding: 2.5rem;
+    border-radius: 24px;
+    gap: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* blocks click selection overlays while collapsed */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .logo h1 {
-    font-size: 1.4rem;
+  /* Revealed layout formatting modifiers when hamburger toggles active state */
+  .nav-links.mobile-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .nav-links a.active::after,
+  .nav-links a:hover::after {
+    width: 60px;
   }
 }
