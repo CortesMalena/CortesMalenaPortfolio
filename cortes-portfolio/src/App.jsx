@@ -1,10 +1,10 @@
 import './App.css'
 import Header from './components/header/Header'
-import Hero from './components/Hero/Hero'
-import AboutMe from './components/about-me/aboutMe'
+import Hero from './components/hero/Hero'
+import AboutMe from './components/about-me/AboutMe'
 import Projects from './components/projects/Projects'
 import Contact from './components/contact/Contact'
-import Footer from './components/footer/footer'
+import Footer from './components/footer/Footer'
 
 function App() {
 
