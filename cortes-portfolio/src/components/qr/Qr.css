@@ -1,0 +1,282 @@
+/* ========== QR PORTFOLIO SECTION STYLESHEET ========== */
+.qr-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+  padding: 4rem 2rem; 
+  position: relative;
+}
+
+.qr-grid-system {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* ========== LEFT SIDE - BRAND CONTENT PAYLOADS ========== */
+.qr-meta-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qr-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: var(--primary-dark);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulseActivation 2s infinite ease-in-out;
+}
+
+@keyframes pulseActivation {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.pill-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.qr-main-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.qr-heading-stroke {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-dark);
+}
+
+.qr-heading-accent {
+  display: inline-block;
+  color: var(--primary);
+}
+
+/* ========== RIGHT SIDE - INTERACTIVE SCANNER ELEMENT ========== */
+.qr-scanner-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.qr-brand-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo-placeholder {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.scanner-frame-isolation {
+  position: relative;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+
+.scanner-frame-isolation:hover {
+  border-color: var(--primary);
+}
+
+/* Structural overlay markers forced on top */
+.frame-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--primary-dark);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.top-left { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.top-right { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.bottom-right { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+/* Bounding box container for exact overlay positioning over the canvas area */
+.scanner-laser-container {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* High-contrast hardware-accelerated laser line loop using original variables */
+.scanner-laser-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  box-shadow: 0 0 12px var(--border-color), 0 0 4px var(--border-color);
+  will-change: transform;
+  animation: laserScanMotion 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes laserScanMotion {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(290px); 
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.canvas-render-block {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+}
+
+.qr-rendering-target {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+  width: 290px !important;
+}
+
+/* Amplified actions text footer blocks */
+.scanner-action-footer {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.action-code-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.action-instruction-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* ========== RESPONSIVE LAYOUT CONFIGURATIONS ========== */
+@media (max-width: 1100px) {
+  .qr-grid-system {
+    gap: 3.5rem;
+  }
+  
+  .qr-main-heading {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 920px) {
+  .qr-grid-system {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .qr-meta-panel {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .qr-main-heading {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .qr-main-heading {
+    font-size: 2rem;
+  }
+  
+  .scanner-frame-isolation {
+    padding: 1.5rem;
+  }
+  
+  .scanner-laser-container {
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+  
+  .qr-rendering-target {
+    width: 230px !important;
+  }
+  
+  @keyframes laserScanMotion {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(230px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}

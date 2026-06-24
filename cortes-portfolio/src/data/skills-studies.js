@@ -18,14 +18,14 @@ export const skills = [
 export const studies = [
   {
     title: "Tecnicatura Universitaria en Programación",
-    years: "2024 - Actualidad",
+    years: "2024 - 2026",
     description:
-      "Proximo a recibirme, actualmente cursando la tesis final. Estudio orientado al desarrollo de aplicaciones web Full Stack.",
+      "Plan de estudios y trabajo final aprobados. Estudio orientado al desarrollo de aplicaciones web Full Stack.",
     institution: "UTN"
   },
 
   {
-    title: "Inglés",
+    title: "Inglés B1",
     years: "2026 - Actualidad",
     description:
       "Cursando la nivelación de inglés en CUI, con el objetivo de alcanzar un nivel avanzado para mejorar mis habilidades de comunicación.",
